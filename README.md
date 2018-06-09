@@ -121,4 +121,6 @@ sudo buster deploy
 
 Done!
 
-#### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost/master/deploy.sh?token=AhLb6jeZ1QW925IBbC70RzSxjovuQ0jdks5bJZUnwA%3D%3D) for easiness.
+#### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
+
+My Blog also has a **Progressive Web App** and I had to modify the deploy.sh script for PWA.
