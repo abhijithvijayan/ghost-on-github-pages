@@ -17,7 +17,7 @@ sudo mkdir DB-backup/images/
 cd ..
 sudo cp sw-toolbox.js static/assets/dist/
 sudo cp -r content/data/* static/DB-backup/
-sudo cp -r content/data/images/* static/DB-backup/images/
+sudo cp -r content/images/* static/DB-backup/images/
 sudo find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#https://blog.abhijithvijayan.me#g' {} \;
 sudo find static -name *.html -type f -exec sed -i '''s#<!-- To be replaced for manifest.json -->#<link rel="manifest" href="../../../../manifest.json" />#g' {} \;
 sudo buster deploy
