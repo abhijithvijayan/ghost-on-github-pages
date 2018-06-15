@@ -80,11 +80,6 @@ git clone https://github.com/username/username.github.io.git static
 ```
 This will clone the empty repo to the 'static' folder inside ghost directory.
 
-## Write new Blog posts
-To write new Blog posts or update the existing ones, just start Ghost, edit, then generate and deploy the static pages.
-
-Write post in your browser [locally](http://localhost.2368/ghost).
-
 ## Deploy to GitHub Pages
 ```
 sudo buster generate --domain=http://localhost:2368
@@ -107,7 +102,7 @@ To write new Blog posts or update the existing ones, just start Ghost, edit, the
 cd ghost
 ghost start
 ```
-Visit http://localost:2368/ghost/
+Visit http://localhost:2368/ghost/
 
 login and write new posts
 
@@ -123,4 +118,4 @@ Done!
 
 #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
 
-My Blog also has a **Progressive Web App** and I had to modify the deploy.sh script for PWA.
+My Blog also has a **Progressive Web App** and so I had to modify the deploy.sh script for PWA.
