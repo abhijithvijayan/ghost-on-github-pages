@@ -118,4 +118,6 @@ Done!
 
 #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
 
-My Blog also has a **Progressive Web App** and so I had to modify the deploy.sh script for PWA.
+My Blog also has a **Progressive Web App** and so I had to modify the deploy.sh script, themes, header, footer for PWA.
+
+For comments I use [Gitment](https://github.com/imsun/gitment)
