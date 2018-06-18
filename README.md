@@ -1,7 +1,8 @@
 # My Personal Blog
+
 ## Ghost Blog Platform on Github Pages
 
-# Hosted [here](https://blog.abhijithvijayan.me)
+### Hosted on [https://blog.abhijithvijayan.me](https://abhijithvijayan.github.io/ghost-on-github-pages/)
 
 
 Major dependencies should be installed in your computer. This is only step currently done by your own.
@@ -94,7 +95,7 @@ For the initial push, please wait up to 10 minutes until GitHub deploys your sub
 
 All upcoming pushes are much faster and you can see your static Ghost blog posts on https://username.github.io
 
-### Voila! Visit the github pages [link](https://abhijithvijayan.github.io/ghost)
+### Voila! Visit the github pages [link](https://abhijithvijayan.github.io/ghost-on-github-pages)
 
 ## Write new Blog posts
 To write new Blog posts or update the existing ones, just start Ghost, edit, then generate and deploy the static pages.
@@ -102,9 +103,11 @@ To write new Blog posts or update the existing ones, just start Ghost, edit, the
 cd ghost
 ghost start
 ```
-Visit http://localhost:2368/ghost/
-
-login and write new posts
+Visit 
+```
+http://localhost:2368/ghost/
+```
+Login and write new posts
 
 ```
 cd static
