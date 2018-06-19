@@ -48,8 +48,10 @@ ghost start
 
 ## Login to Ghost
 ```
-Go to http://localhost:2368/ghost in your browser.
+http://localhost:3268/ghost/
 ```
+Go to the above link in your browser
+
 Create an account, read the intial blog post how to edit with Markdown etc.
 
 ## Change folder permissions in your local computer with your Ubuntu username
