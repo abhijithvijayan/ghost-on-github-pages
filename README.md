@@ -11,9 +11,18 @@
 
 Major dependencies should be installed in your computer. This is only step currently done by your own.
 
-- [Python 2](https://www.python.org/download/releases/2.7.2/): install some of Python 2.X, because buster package doesn't support Python 3.
+- [Python 2](https://www.python.org/download/releases/2.7.2/): install Python 2.X, because buster package doesn't support Python 3.
+```
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt-get update
+sudo apt-get install python2.7
+```
 
 - [NodeJS](https://docs.ghost.org/docs/supported-node-versions): install a version that is officially supported by Ghost, just like Node v6.9 or Node v8.9.
+```
+curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
 
 - [npm](https://nodejs.org/en/): NodeJS package manager.
 
@@ -72,6 +81,11 @@ ghost install local --no-start --enable --port 2368
 ```
 ghost start
 ```
+Open browser and navigate to
+```
+
+```
+![image](https://preview.ibb.co/no4n5U/desktop.jpg)
 
 ## Login to Ghost
 ```
@@ -84,11 +98,6 @@ ghost status
 
 Create an account, read the intial blog post how to edit with Markdown etc.
 
-## Change folder permissions in your local computer with your Ubuntu username
-```
-sudo chown username:username /home/username/ghost
-```
-
 ## Install Buster
 With the tool [Buster](https://github.com/axitkhurana/buster) you can export the Ghost blogs into static pages. 
 
@@ -96,6 +105,7 @@ First we install Buster with:
 ```
 brew install python
 sudo apt install python-pip
+pip install --upgrade pip
 sudo -H pip install buster
 ```
 ## Create your GitHub Pages repo
@@ -146,10 +156,21 @@ cd static
 sudo rm -r *
 cd ..
 sudo buster generate --domain=http://localhost:2368
+```
+Fix the broken links with
+```
+sudo find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#https://username.github.io#g' {} \;
+```
+Replace username.github.io accordingly
+
+### Deploy with Buster
+```
 sudo buster deploy
 ```
+Visit the GitHub repo and from settings Enable Github Pages on the master branch.
 
-Done!
+Voila! You got yourself a ghost blog on github pages.
+
 
 #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
 
