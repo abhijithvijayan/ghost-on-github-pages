@@ -19,7 +19,7 @@ Major dependencies should be installed in your computer. This is only step curre
 
 Besides that, there's some minor dependencies too, but they should be automatically installed for you.
 
-To build your own static [GitHub Pages](https://pages.github.com) with [Ghost](https://ghost.org), just follow these steps.
+After installing the above three packages continue to build your own static [GitHub Pages](https://pages.github.com) with [Ghost](https://ghost.org) following these steps.
 
 ## Install Brew
 ```
@@ -33,8 +33,31 @@ Ghost is written in Node.js, so you will need the Node.js runtime.
 ```
 brew install node
 brew install wget
+sudo apt-get install build-essential
+```
+Update brew with the command
+```
+update brew
+```
+Once again run the update command. Refer [here](https://github.com/Linuxbrew/brew/blob/master/docs/Troubleshooting.md) for details.
+```
+update brew
+```
+
+Install npm
+```
 sudo apt install npm
+```
+Initialize npm 
+```
 npm init
+```
+Enter the credentials when asked
+- github username in the name field, repository name(username.github.io) for repository name, a description. 
+Leave the other less important fields empty.
+
+Then run
+```
 npm install --production
 ```
 
