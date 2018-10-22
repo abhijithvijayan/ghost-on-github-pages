@@ -1,13 +1,9 @@
 # My Personal Blog
 
 [![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/abhijithvijayan)
-[![ReadFromBlog](https://img.shields.io/badge/visit-blog-blue.svg)](https://blog.abhijithvijayan.me)
 [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
 
 ## Ghost Blog Platform on Github Pages
-
-### Hosted on [https://blog.abhijithvijayan.me](https://abhijithvijayan.github.io/ghost-on-github-pages/)
-
 
 Major dependencies should be installed in your computer. This is only step currently done by your own.
 
@@ -137,8 +133,6 @@ For the initial push, please wait up to 10 minutes until GitHub deploys your sub
 
 All upcoming pushes are much faster and you can see your static Ghost blog posts on https://username.github.io
 
-### Voila! Visit the github pages [link](https://abhijithvijayan.github.io/ghost-on-github-pages)
-
 ## Write new Blog posts
 To write new Blog posts or update the existing ones, just start Ghost, edit, then generate and deploy the static pages.
 ```
@@ -174,8 +168,8 @@ Voila! You got yourself a ghost blog on github pages.
 
 #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
 
-My Blog also has a **Progressive Web App** and so I had to modify the deploy.sh script, themes, header, footer for PWA.
+My Blog also had a **Progressive Web App** and so I had to modify the deploy.sh script, themes, header, footer for PWA.
 
-For comments I use [Gitment](https://github.com/imsun/gitment)
+For comments I used [Gitment](https://github.com/imsun/gitment)
 
 If errors pop up, google it and get it done.
