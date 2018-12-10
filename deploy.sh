@@ -16,12 +16,9 @@ initial() {
 		echo ''
 		read -p "Github username: "  gh_username
 		read -p "Remote URL: "  remote_url
-		echo ''
 		echo "Leave blank if repo name is username.github.io"
-		echo ''
 		read -p "Repo name: " gh_repo
 
-		mkdir static
 		buster setup --gh-repo="$remote_url"
 		buster generate --domain="$GHOST_URL"
 
@@ -47,7 +44,6 @@ deploy_gh() {
 		echo ''
 		read -p "Github username: "  gh_username
 		echo "Leave blank if repo name is username.github.io"
-		echo ''
 		read -p "Repo name: " gh_repo
 
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
@@ -59,15 +55,19 @@ deploy_gh() {
 		
 deploy_main() {
 
+		mkdir static/
+		cd static/
 		repo_status="$(git status)"
 		case "fatal" in 
   			*"$repo_status"*)
 				echo '[INFO] Configuring git repository...'
 				echo '[INFO] Generating static files from Ghost server...'
+				cd ..
 				initial
     			exit
     		;;
 		esac
+		cd ..
 		deploy_gh
 }
 deploy_main
