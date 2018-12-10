@@ -1,38 +1,52 @@
-# My Personal Blog
+# Ghost Blog Platform on Github Pages
 
-[![Say Thanks!](https://img.shields.io/badge/Say%20Thanks-!-1EAEDB.svg)](https://saythanks.io/to/abhijithvijayan)
+[![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://abhijithvijayan.github.io/ghost-on-github-pages/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
 
-## Ghost Blog Platform on Github Pages
+## Table of Contents
 
-Major dependencies should be installed in your computer. This is only step currently done by your own.
+  * [Requirements](#requirements)
+      + [1) Install Major Dependencies](#1-Install-Major-Dependencies)
+      + [2) Install Other Packages](#2-Install-Other-Packages)
+  * [Setup](#setup)
+    + [1) Install Ghost](#1-Download-and-Install-Ghost)
+    + [2) Create a new Github repository](#2-Create-your-GitHub-Pages-repo)
+    + [3) Deploying to Github Pages](#3-Deploy-to-GitHub-Pages)
+  * [How to update your blog?](#Write-new-Blog-posts)
 
-- [Python 2](https://www.python.org/download/releases/2.7.2/): install Python 2.X, because buster package doesn't support Python 3.
+<hr />
+
+## Requirements
+
+## 1) Install Major Dependencies
+
+### Install [Python 2](https://www.python.org/download/releases/2.7.2/)
+Install Python 2.X, because buster package doesn't support Python 3.
 ```
 sudo add-apt-repository ppa:deadsnakes/ppa
 sudo apt-get update
 sudo apt-get install python2.7
 ```
 
-- [NodeJS](https://docs.ghost.org/docs/supported-node-versions): install a version that is officially supported by Ghost, just like Node v6.9 or Node v8.9.
+### Install [NodeJS](https://docs.ghost.org/docs/supported-node-versions)
+Install a version that is officially supported by Ghost, just like Node v6.9 or Node v8.9.
 ```
 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
 sudo apt-get install -y nodejs
 ```
 
-- [npm](https://nodejs.org/en/): NodeJS package manager.
+### Install [npm](https://nodejs.org/en/)
+NodeJS package manager from `https://nodejs.org/en/`
 
-Besides that, there's some minor dependencies too, but they should be automatically installed for you.
+## 2) Install Other Packages
 
-After installing the above three packages continue to build your own static [GitHub Pages](https://pages.github.com) with [Ghost](https://ghost.org) following these steps.
-
-## Install Brew
+### Install Brew
 ```
 sudo apt-get update
 sudo apt install linuxbrew-wrapper
 ```
 
-## Install Node.js and npm
+### Install Node.js runtime and npm
 Ghost is written in Node.js, so you will need the Node.js runtime.
 
 ```
@@ -66,7 +80,21 @@ Then run
 npm install --production
 ```
 
-## Download and Install Ghost
+### Install Buster
+With the tool [Buster](https://github.com/axitkhurana/buster) you can export the Ghost blogs into static pages. 
+
+First we install Buster with:
+```
+brew install python
+sudo apt install python-pip
+pip install --upgrade pip
+sudo -H pip install buster
+```
+<hr />
+
+## Setup
+
+## 1) Download and Install Ghost
 ```
 mkdir ghost
 cd ghost
@@ -94,44 +122,30 @@ ghost status
 
 Create an account, read the intial blog post how to edit with Markdown etc.
 
-## Install Buster
-With the tool [Buster](https://github.com/axitkhurana/buster) you can export the Ghost blogs into static pages. 
-
-First we install Buster with:
-```
-brew install python
-sudo apt install python-pip
-pip install --upgrade pip
-sudo -H pip install buster
-```
-## Create your GitHub Pages repo
+## 2) Create your GitHub Pages repo
 See the [GitHub Pages Basics Documentation](https://help.github.com/categories/20/articles) for details.
 
 You must use the `username/username.github.io` naming scheme. The repo name must be **lower case** even if your username has upper case letters.
 
-I have placed the `static` folder for Buster inside my Ghost installation. 
-```
-mdkir static
-```
-So I just cloned my `username/username.github.io` repo with a target directory name like this:
-```
-git clone https://github.com/username/username.github.io.git static
-```
-This will clone the empty repo to the 'static' folder inside ghost directory.
-
-## Deploy to GitHub Pages
-```
+## 3) Deploy to GitHub Pages
+<!-- ```
 sudo buster generate --domain=http://localhost:2368
 
 sudo buster deploy
-```
-Enter your github username and password.
+``` -->
+<!-- Enter your github username and password.
 
-This will add, commit and push all files in the `static` folder to your GitHub repo.
+This will add, commit and push all files in the `static` folder to your GitHub repo. -->
+Run the `deploy.sh` script/.
+```
+sudo ./deploy.sh
+```
 
 For the initial push, please wait up to 10 minutes until GitHub deploys your subdomain.
 
 All upcoming pushes are much faster and you can see your static Ghost blog posts on https://username.github.io
+
+<hr />
 
 ## Write new Blog posts
 To write new Blog posts or update the existing ones, just start Ghost, edit, then generate and deploy the static pages.
@@ -145,31 +159,32 @@ http://localhost:2368/ghost/
 ```
 Login and write new posts
 
-```
+<!-- ```
 cd static
 sudo rm -r *
 cd ..
 sudo buster generate --domain=http://localhost:2368
-```
-Fix the broken links with
+``` -->
+<!-- Fix the broken links with
 ```
 sudo find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#https://username.github.io#g' {} \;
 ```
-Replace username.github.io accordingly
+Replace username.github.io accordingly -->
 
-### Deploy with Buster
+## Deploy with Buster
+After writing new posts, deploy with buster.
 ```
-sudo buster deploy
+sudo ./deploy.sh
 ```
-Visit the GitHub repo and from settings Enable Github Pages on the master branch.
+Enter the credentials when asked!
 
-Voila! You got yourself a ghost blog on github pages.
+<hr />
 
+### Voila! You got yourself a ghost blog on github pages.
 
-#### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness.
+<!-- #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness. -->
 
-My Blog also had a **Progressive Web App** and so I had to modify the deploy.sh script, themes, header, footer for PWA.
+My Blog also has a **Progressive Web App** and so I had to modify the `deploy.sh` script, `themes`, `header`, `footer` for PWA.
 
 For comments I used [Gitment](https://github.com/imsun/gitment)
-
-If errors pop up, google it and get it done.
+The theme I use is [Casper-beta](https://github.com/abhijithvijayan/__casper-beta)

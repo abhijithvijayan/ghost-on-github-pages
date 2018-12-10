@@ -1,24 +1,71 @@
-#!/bin/bash
-cd static
-sudo rm -r *
-cd ..
-sudo buster generate --domain=http://localhost:2368
-sudo cp CNAME static/
-sudo cp README.md static/
-sudo cp deploy.sh static/
-sudo cp manifest.json static/
-sudo cp -r images static/
-sudo cp serviceworker-v1.js static/
-cd static/assets/
-sudo mkdir dist
-cd ..
-sudo mkdir DB-backup
-sudo mkdir DB-backup/images/
-cd ..
-sudo cp sw-toolbox.js static/assets/dist/
-sudo cp -r content/data/* static/DB-backup/
-sudo cp -r content/images/* static/DB-backup/images/
-sudo find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#https://blog.abhijithvijayan.me#g' {} \;
-sudo find static -name *.html -type f -exec sed -i '''s#<!-- To be replaced for manifest.json -->#<link rel="manifest" href="manifest.json" />#g' {} \;
-sudo buster deploy
+#!/usr/bin/env bash
 
+GHOST_URL="localhost:2368/"
+
+# References:
+# https://github.com/paladini/ghost-on-github-pages/blob/master/includes/deploy.sh
+# https://stefanscherer.github.io/setup-ghost-for-github-pages/
+
+initial() {
+		
+		mkdir static
+		echo ' -------------------- INFORMATION NEEDED -------------------- '
+		echo ''
+		echo "Following you'll be asked to enter a Github Username and Git Remote URL in which you would like to deploy Ghost."
+		echo "Example:"
+		echo "       https://github.com/YOUR_USERNAME/YOUR_REPOSITORY.git"
+		echo ''
+		read -p "Github username: "  gh_username
+		read -p "Remote URL: "  remote_url
+		echo ''
+		echo "Leave blank if repo name is username.github.io"
+		echo ''
+		read -p "Repo name: " gh_repo
+		
+		buster setup --gh-repo="$remote_url"
+		buster generate --domain="$GHOST_URL"
+
+		find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+
+		git init
+		git remote add origin "$remote_url"
+
+		buster deploy
+}
+
+deploy_gh() {
+
+		cd static
+		rm -r *
+		cd ..
+
+		buster generate --domain="$GHOST_URL"
+		
+		echo ' -------------------- FIXING LINKS  -------------------- '
+		echo ''
+		read -p "Github username: "  gh_username
+		echo "Leave blank if repo name is username.github.io"
+		echo ''
+		read -p "Repo name: " gh_repo
+
+		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+
+		echo '[INFO] Deploying to your Github repository...'
+
+		buster deploy
+}
+		
+deploy_main() {
+
+		repo_status="$(git status)"
+		case "fatal" in 
+  			*"$repo_status"*)
+				echo '[INFO] Configuring git repository...'
+				echo '[INFO] Generating static files from Ghost server...'
+				initial
+    			exit
+    		;;
+		esac
+		deploy_gh
+}
+deploy_main
