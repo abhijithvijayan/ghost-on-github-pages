@@ -136,7 +136,7 @@ sudo buster deploy
 <!-- Enter your github username and password.
 
 This will add, commit and push all files in the `static` folder to your GitHub repo. -->
-Run the `deploy.sh` script/.
+Run the [deploy.sh](deploy.sh) script/.
 ```
 sudo ./deploy.sh
 ```
@@ -173,6 +173,7 @@ Replace username.github.io accordingly -->
 
 ## Deploy with Buster
 After writing new posts, deploy with buster.
+Run the [deploy.sh](deploy.sh) script/.
 ```
 sudo ./deploy.sh
 ```
@@ -187,4 +188,5 @@ Enter the credentials when asked!
 My Blog also has a **Progressive Web App** and so I had to modify the `deploy.sh` script, `themes`, `header`, `footer` for PWA.
 
 For comments I used [Gitment](https://github.com/imsun/gitment)
+
 The theme I use is [Casper-beta](https://github.com/abhijithvijayan/__casper-beta)

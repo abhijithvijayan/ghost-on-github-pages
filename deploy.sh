@@ -7,8 +7,7 @@ GHOST_URL="localhost:2368/"
 # https://stefanscherer.github.io/setup-ghost-for-github-pages/
 
 initial() {
-		
-		mkdir static
+
 		echo ' -------------------- INFORMATION NEEDED -------------------- '
 		echo ''
 		echo "Following you'll be asked to enter a Github Username and Git Remote URL in which you would like to deploy Ghost."
@@ -21,15 +20,18 @@ initial() {
 		echo "Leave blank if repo name is username.github.io"
 		echo ''
 		read -p "Repo name: " gh_repo
-		
+
+		mkdir static
 		buster setup --gh-repo="$remote_url"
 		buster generate --domain="$GHOST_URL"
 
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
-
+		
+		cd static/
 		git init
 		git remote add origin "$remote_url"
 
+		cd ..
 		buster deploy
 }
 
