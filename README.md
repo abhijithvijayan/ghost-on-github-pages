@@ -192,12 +192,11 @@ Enter the credentials when asked!
 
 - Live Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 - Demo Repo: https://github.com/abhijithvijayan/ghost-blog-demo
-- Custom Theme Repo: https://github.com/abhijithvijayan/__casper-beta
+- Custom Theme Repo: https://github.com/abhijithvijayan/Casper-XYZ
 
 <!-- #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness. -->
 
 <!--
 My Blog also has a **Progressive Web App** and so I had to modify the `deploy.sh` script, `themes`, `header`, `footer` for PWA.
 For comments I used [Gitment](https://github.com/imsun/gitment)
-The theme I use is [Casper-beta](https://github.com/abhijithvijayan/__casper-beta)
 -->
