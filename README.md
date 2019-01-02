@@ -3,6 +3,8 @@
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
 
+Demo Version: https://abhijithvijayan.github.io/ghost-blog-demo/
+
 ## Table of Contents
 
   * [Requirements](#requirements)
@@ -136,6 +138,7 @@ Go to the above link in your browser ans if it doesn't show anything, check the 
 ```
 ghost status
 ```
+![](https://i.imgur.com/OeAsLDw.png)
 
 Create an account, read the intial blog post how to edit with Markdown etc.
 
@@ -186,7 +189,8 @@ Enter the credentials when asked!
 
 ### Voila! You got yourself a ghost blog on github pages.
 
-https://github.com/abhijithvijayan/ghost-blog-demo
+- Demo Repo: https://github.com/abhijithvijayan/ghost-blog-demo
+- Custom Theme Repo: https://github.com/abhijithvijayan/__casper-beta
 
 <!-- #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness. -->
 
