@@ -1,6 +1,6 @@
 # Ghost Blog Platform on Github Pages
 
-[![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://abhijithvijayan.github.io/ghost-on-github-pages/)
+[![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
 
 ## Table of Contents
@@ -37,6 +37,9 @@ sudo apt-get install -y nodejs
 
 ### Install [npm](https://nodejs.org/en/)
 NodeJS package manager from `https://nodejs.org/en/`
+```
+sudo apt install npm
+```
 
 ## 2) Install Other Packages
 
@@ -56,28 +59,35 @@ sudo apt-get install build-essential
 ```
 Update brew with the command
 ```
-update brew
+brew update
 ```
 Once again run the update command. Refer [here](https://github.com/Linuxbrew/brew/blob/master/docs/Troubleshooting.md) for details.
 ```
-update brew
+brew update
 ```
 
-Install npm
-```
-sudo apt install npm
-```
 Initialize npm 
 ```
 npm init
 ```
 Enter the credentials when asked
-- github username in the name field, repository name(username.github.io) for repository name, a description. 
+- github username in the name field, 
+- repository name(username.github.io) for repository name, 
+- a description. 
+
 Leave the other less important fields empty.
 
 Then run
 ```
 npm install --production
+```
+
+### Install yarn
+```
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+sudo apt update
+sudo apt install yarn
 ```
 
 ### Install Buster
@@ -99,6 +109,13 @@ sudo -H pip install buster
 mkdir ghost
 cd ghost
 sudo npm install -g ghost-cli@latest
+```
+Empty the pwd
+```
+sudo rm -r *
+```
+Install Ghost
+```
 ghost install local --no-start --enable --port 2368
 ```
 ## Start Ghost
@@ -128,17 +145,15 @@ See the [GitHub Pages Basics Documentation](https://help.github.com/categories/2
 You must use the `username/username.github.io` naming scheme. The repo name must be **lower case** even if your username has upper case letters.
 
 ## 3) Deploy to GitHub Pages
-<!-- ```
-sudo buster generate --domain=http://localhost:2368
+Create a file named `deploy.sh` with contents from [deploy.sh](deploy.sh)
 
-sudo buster deploy
-``` -->
-<!-- Enter your github username and password.
-
-This will add, commit and push all files in the `static` folder to your GitHub repo. -->
-Run the [deploy.sh](deploy.sh) script/.
+Give permission 
 ```
-sudo ./deploy.sh
+chmod u+x deploy.sh
+```
+Deploy with
+```
+./deploy.sh
 ```
 
 For the initial push, please wait up to 10 minutes until GitHub deploys your subdomain.
@@ -159,23 +174,11 @@ http://localhost:2368/ghost/
 ```
 Login and write new posts
 
-<!-- ```
-cd static
-sudo rm -r *
-cd ..
-sudo buster generate --domain=http://localhost:2368
-``` -->
-<!-- Fix the broken links with
-```
-sudo find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#https://username.github.io#g' {} \;
-```
-Replace username.github.io accordingly -->
-
 ## Deploy with Buster
 After writing new posts, deploy with buster.
 Run the [deploy.sh](deploy.sh) script/.
 ```
-sudo ./deploy.sh
+./deploy.sh
 ```
 Enter the credentials when asked!
 
@@ -183,10 +186,12 @@ Enter the credentials when asked!
 
 ### Voila! You got yourself a ghost blog on github pages.
 
+https://github.com/abhijithvijayan/ghost-blog-demo
+
 <!-- #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness. -->
 
+<!--
 My Blog also has a **Progressive Web App** and so I had to modify the `deploy.sh` script, `themes`, `header`, `footer` for PWA.
-
 For comments I used [Gitment](https://github.com/imsun/gitment)
-
 The theme I use is [Casper-beta](https://github.com/abhijithvijayan/__casper-beta)
+-->
