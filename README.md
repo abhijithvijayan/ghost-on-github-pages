@@ -1,5 +1,6 @@
 # Ghost Blog Platform on Github Pages
 
+[![](https://img.shields.io/badge/last--update-January--2019-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
 [![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
 
@@ -51,7 +52,7 @@ sudo apt-get update
 sudo apt install linuxbrew-wrapper
 ```
 
-### Install Node.js runtime and npm
+### Install Node.js runtime
 Ghost is written in Node.js, so you will need the Node.js runtime.
 
 ```
@@ -73,9 +74,9 @@ Initialize npm
 npm init
 ```
 Enter the credentials when asked
-- github username in the name field, 
-- repository name(username.github.io) for repository name, 
-- a description. 
+- github username in the name field*
+- repository name(eg: username.github.io)
+- a description*
 
 Leave the other less important fields empty.
 
@@ -126,7 +127,7 @@ ghost start
 ```
 Open browser and navigate to
 ```
-
+http://localhost:2368/
 ```
 ![image](https://preview.ibb.co/no4n5U/desktop.jpg)
 
@@ -150,7 +151,7 @@ You must use the `username/username.github.io` naming scheme. The repo name must
 ## 3) Deploy to GitHub Pages
 Create a file named `deploy.sh` with contents from [deploy.sh](deploy.sh)
 
-Give permission 
+Give execute permission 
 ```
 chmod u+x deploy.sh
 ```
@@ -161,7 +162,7 @@ Deploy with
 
 For the initial push, please wait up to 10 minutes until GitHub deploys your subdomain.
 
-All upcoming pushes are much faster and you can see your static Ghost blog posts on https://username.github.io
+All upcoming pushes are much faster and you can see your static ghost blog posts at https://username.github.io
 
 <hr />
 
@@ -189,6 +190,7 @@ Enter the credentials when asked!
 
 ### Voila! You got yourself a ghost blog on github pages.
 
+- Live Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 - Demo Repo: https://github.com/abhijithvijayan/ghost-blog-demo
 - Custom Theme Repo: https://github.com/abhijithvijayan/__casper-beta
 
