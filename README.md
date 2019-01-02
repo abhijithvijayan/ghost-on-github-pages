@@ -2,7 +2,7 @@
 
 [![](https://img.shields.io/badge/last--update-January--2019-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
-[![Twitter Follow](https://img.shields.io/twitter/follow/espadrine.svg?style=social&label=Follow)](https://twitter.com/_abhijithv)
+[![](https://img.shields.io/twitter/follow/_abhijithv.svg?label=Follow&style=social)](https://twitter.com/_abhijithv)
 
 Demo Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 
