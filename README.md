@@ -4,6 +4,9 @@
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
 [![](https://img.shields.io/twitter/follow/_abhijithv.svg?label=Follow&style=social)](https://twitter.com/_abhijithv)
 
+## Deprecation Warning
+Python 2 is no longer maintained so I recommend using [Gatsby](https://www.gatsbyjs.org/) instead.
+
 Demo Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 
 ## Table of Contents
