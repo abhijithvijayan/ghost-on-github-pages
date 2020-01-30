@@ -1,8 +1,20 @@
 # Ghost Blog Platform on Github Pages
 
-[![](https://img.shields.io/badge/last--update-June--2019-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
+[![](https://img.shields.io/badge/last--update-Jan--2020-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
-[![](https://img.shields.io/twitter/follow/_abhijithv.svg?label=Follow&style=social)](https://twitter.com/_abhijithv)
+
+<h3>🙋‍♂️ Made by <a href="https://twitter.com/_abhijithv">@abhijithvijayan</a></h3>
+<p>
+  Donate:
+  <a href="https://www.paypal.me/iamabhijithvijayan" target='_blank'><i><b>PayPal</b></i></a>,
+  <a href="https://www.patreon.com/abhijithvijayan" target='_blank'><i><b>Patreon</b></i></a>
+</p>
+<p>
+  <a href='https://www.buymeacoffee.com/abhijithvijayan' target='_blank'>
+    <img height='36' style='border:0px;height:36px;' src='https://bmc-cdn.nyc3.digitaloceanspaces.com/BMC-button-images/custom_images/orange_img.png' border='0' alt='Buy Me a Coffee' />
+  </a>
+</p>
+<hr />
 
 ## Deprecation Warning
 Python 2 is no longer maintained so I recommend using [Gatsby](https://www.gatsbyjs.org/) instead.
