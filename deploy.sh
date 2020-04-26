@@ -1,13 +1,9 @@
 #!/usr/bin/env bash
 
 GHOST_URL="localhost:2368/"
+OUTDIR=static
 
-# References:
-# https://github.com/paladini/ghost-on-github-pages/blob/master/includes/deploy.sh
-# https://stefanscherer.github.io/setup-ghost-for-github-pages/
-
-initial() {
-
+setup() {
 		echo ' -------------------- INFORMATION NEEDED -------------------- '
 		echo ''
 		echo "Following you'll be asked to enter a Github Username and Git Remote URL in which you would like to deploy Ghost."
@@ -19,64 +15,70 @@ initial() {
 		echo "Leave blank if repo name is username.github.io"
 		read -p "Repo name: " gh_repo
 
-		buster setup --gh-repo="$remote_url"
-		buster generate --domain="$GHOST_URL"
+		wget -r -nH -P $OUTDIR -E -T 2 -np -k $GHOST_URL
 
-		find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
 
-		cd static/
+		cd $OUTDIR
 		git init
 		git remote add origin "$remote_url"
 
-		cd ..
-		buster deploy
+		git add .
+		git commit -m "Initial commit"
+		git push origin master:master master:gh-pages -f
 }
 
-deploy_gh() {
+update() {
+		rm -rf $OUTDIR/*
 
-		cd static
-		rm -r *
-		cd ..
+		wget -r -nH -P $OUTDIR -E -T 2 -np -k $GHOST_URL
 
-		buster generate --domain="$GHOST_URL"
-
+		echo ''
 		echo ' -------------------- FIXING LINKS  -------------------- '
 		echo ''
 		read -p "Github username: "  gh_username
 		echo "Leave blank if repo name is username.github.io"
-		read -p "Repo name: " gh_repo
+		read -p "Repo name(eg: ghost-blog-demo): " gh_repo
 
-		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+		# Fix links
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+
+		echo ''
 		echo ' ------------------- FIXING IMAGES  -------------------- '
 		echo ''
-		find static -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;
-		find static -name *.html -type f -exec sed -i '''s#.jpgpg 1000w#''.jpg 1000w''#g' {} \;
-		find static -name *.html -type f -exec sed -i '''s#.jpgjpg 2000w#''.jpg 2000w''#g' {} \;
-		find static -name *.html -type f -exec sed -i '''s#.pngg 600w#''.png 600w''#g' {} \;
-		find static -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
-		find static -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgpg 1000w#''.jpg 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgjpg 2000w#''.jpg 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngg 600w#''.png 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
 
 		echo '[INFO] Deploying to your Github repository...'
 
-		buster deploy
+		# Commiting changes
+		cd $OUTDIR
+		git add .
+		git commit -m "Update on the website at $(date)"
+		git push origin master:master master:gh-pages -f
 }
 
-deploy_main() {
-
-		mkdir static/
-		cd static/
+# entry point
+build() {
+		mkdir $OUTDIR # this might fail when folder exist
+		cd $OUTDIR
 		repo_status="$(git status)"
 		case "fatal" in
   			*"$repo_status"*)
 				echo '[INFO] Configuring git repository...'
 				echo '[INFO] Generating static files from Ghost server...'
 				cd ..
-				initial
+				setup
     			exit
     		;;
 		esac
 		cd ..
-		deploy_gh
+		update
 }
-deploy_main
+
+build
 
