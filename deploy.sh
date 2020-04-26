@@ -23,7 +23,7 @@ initial() {
 		buster generate --domain="$GHOST_URL"
 
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
-		
+
 		cd static/
 		git init
 		git remote add origin "$remote_url"
@@ -39,7 +39,7 @@ deploy_gh() {
 		cd ..
 
 		buster generate --domain="$GHOST_URL"
-		
+
 		echo ' -------------------- FIXING LINKS  -------------------- '
 		echo ''
 		read -p "Github username: "  gh_username
@@ -49,21 +49,24 @@ deploy_gh() {
 		find static -name *.html -type f -exec sed -i '''s#http://localhost:2373#'$gh_username'.github.io/'$gh_repo'#g' {} \;
 		echo ' ------------------- FIXING IMAGES  -------------------- '
 		echo ''
-		find static -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;		
+		find static -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;
 		find static -name *.html -type f -exec sed -i '''s#.jpgpg 1000w#''.jpg 1000w''#g' {} \;
 		find static -name *.html -type f -exec sed -i '''s#.jpgjpg 2000w#''.jpg 2000w''#g' {} \;
-	
+		find static -name *.html -type f -exec sed -i '''s#.pngg 600w#''.png 600w''#g' {} \;
+		find static -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
+		find static -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
+
 		echo '[INFO] Deploying to your Github repository...'
 
 		buster deploy
 }
-		
+
 deploy_main() {
 
 		mkdir static/
 		cd static/
 		repo_status="$(git status)"
-		case "fatal" in 
+		case "fatal" in
   			*"$repo_status"*)
 				echo '[INFO] Configuring git repository...'
 				echo '[INFO] Generating static files from Ghost server...'
