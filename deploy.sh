@@ -49,6 +49,9 @@ update() {
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgpg 1000w#''.jpg 1000w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgjpg 2000w#''.jpg 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegg 600w#''.jpg 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegeg 1000w#''.jpg 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegpeg 2000w#''.jpg 2000w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngg 600w#''.png 600w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
