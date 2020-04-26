@@ -1,6 +1,6 @@
 # Ghost Blog Platform on Github Pages
 
-[![](https://img.shields.io/badge/last--update-Jan--2020-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
+[![](https://img.shields.io/badge/last--update-Apr--2020-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
 [![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
 
 <h3>🙋‍♂️ Made by <a href="https://twitter.com/_abhijithv">@abhijithvijayan</a></h3>
@@ -15,11 +15,6 @@
   </a>
 </p>
 <hr />
-
-## Deprecation Warning
-Python 2 is no longer maintained so I recommend using [Gatsby](https://www.gatsbyjs.org/) instead.
-
-Demo Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 
 ## Table of Contents
 
@@ -38,39 +33,21 @@ Demo Version: https://abhijithvijayan.github.io/ghost-blog-demo/
 
 ## 1) Install Major Dependencies
 
-### Install [Python 2](https://www.python.org/download/releases/2.7.2/)
+### Install [NodeJS](https://nodejs.org/en/download/package-manager/)
 
-Install Python 2.X, because buster package doesn't support Python 3.
-
-```
-sudo add-apt-repository ppa:deadsnakes/ppa
-sudo apt-get update
-sudo apt-get install python2.7
-```
-
-### Install [NodeJS](https://docs.ghost.org/docs/supported-node-versions)
-
-Install a version that is officially supported by Ghost, just like Node v6.9 or Node v8.9.
+Install a version that is officially [supported]((https://docs.ghost.org/docs/supported-node-versions)) by Ghost, preferably latest LTS
 
 ```
-curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
+curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
 sudo apt-get install -y nodejs
-```
-
-### Install [npm](https://nodejs.org/en/)
-
-NodeJS package manager from `https://nodejs.org/en/`
-
-```
-sudo apt install npm
 ```
 
 ## 2) Install Other Packages
 
-### Install [Brew](https://docs.brew.sh/Homebrew-on-Linux#install)
+### Install [Homebrew](https://brew.sh/)
 
 ```
-sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install.sh)"
 ```
 
 ### Install Node.js runtime
@@ -97,31 +74,12 @@ Enter the credentials when asked
 
 Leave the other less important fields empty.
 
-Then run
-
-```
-npm install --production
-```
-
-### Install [yarn](https://yarnpkg.com/lang/en/docs/install/#debian-stable)
+### Install [yarn](https://classic.yarnpkg.com/en/docs/install/#debian-stable)
 
 ```
 curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
 echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-sudo apt-get update && sudo apt-get install yarn
-```
-
-### Install Buster
-
-With the tool [Buster](https://github.com/axitkhurana/buster) you can export the Ghost blogs into static pages.
-
-First we install Buster with:
-
-```
-brew install python
-sudo apt install python-pip
-pip install --upgrade pip
-sudo -H pip install buster
+sudo apt update && sudo apt install yarn
 ```
 
 <hr />
@@ -131,14 +89,13 @@ sudo -H pip install buster
 ## 1) Download and Install Ghost
 
 ```
+npm install ghost-cli@latest -g
+```
+
+Change the present working directory
+
+```
 mkdir ghost && cd ghost
-sudo npm install ghost-cli@latest -g
-```
-
-Empty the present working directory
-
-```
-sudo rm -r *
 ```
 
 Install Ghost
@@ -179,9 +136,15 @@ Create an account, read the intial blog post how to edit with Markdown etc.
 
 ## 2) Create your GitHub Pages repo
 
-See the [GitHub Pages Basics Documentation](https://help.github.com/categories/20/articles) for details.
+Create a repo with [`create-remote-repo`](https://github.com/abhijithvijayan/create-remote-repo-cli) CLI
 
 You must use the `username/username.github.io` naming scheme. The repo name must be **lower case** even if your username has upper case letters.
+
+```js
+npx create-remote-repo username.github.io
+
+# Replace with your username
+```
 
 ## 3) Deploy to GitHub Pages
 
@@ -201,7 +164,7 @@ Deploy with
 
 For the initial push, please wait up to 10 minutes until GitHub deploys your subdomain.
 
-All upcoming pushes are much faster and you can see your static ghost blog posts at https://username.github.io
+All upcoming pushes are much faster and you can see your static ghost blog posts at <https://username.github.io>
 
 <hr />
 
@@ -222,9 +185,9 @@ http://localhost:2368/ghost/
 
 Login and write new posts
 
-## Deploy with Buster
+## Deploy with `wget`
 
-After writing new posts, deploy with buster.
+After writing new posts, deploy with `wget`.
 Run the [deploy.sh](deploy.sh) script/.
 
 ```
@@ -235,11 +198,11 @@ Enter the credentials when asked!
 
 <hr />
 
-### Voila! You got yourself a ghost blog on github pages.
+### Voila! You got yourself a ghost blog on github pages
 
-- Live Version: https://abhijithvijayan.github.io/ghost-blog-demo/
-- Demo Repo: https://github.com/abhijithvijayan/ghost-blog-demo
-- Custom Theme Repo: https://github.com/abhijithvijayan/Casper-XYZ
+- Live Version: <https://abhijithvijayan.github.io/ghost-blog-demo/>
+- Demo Repo: <https://github.com/abhijithvijayan/ghost-blog-demo>
+- Custom Theme Repo: <https://github.com/abhijithvijayan/Casper-XYZ>
 
 <!-- #### N.B. I made a script [deploy.sh](https://raw.githubusercontent.com/abhijithvijayan/ghost-on-github-pages/master/deploy.sh) for easiness. -->
 
