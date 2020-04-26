@@ -1,7 +1,9 @@
 # Ghost Blog Platform on Github Pages
 
 [![](https://img.shields.io/badge/last--update-Apr--2020-red.svg)](https://github.com/abhijithvijayan/ghost-on-github-pages/commits/master)
-[![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://github.com/abhijithvijayan/ghost-blog-demo/)
+[![Visit blog!](https://img.shields.io/badge/visit-blog-blue.svg)](https://abhijithvijayan.github.io/ghost-blog-demo/)
+
+> https://abhijithvijayan.github.io/ghost-blog-demo/
 
 <h3>🙋‍♂️ Made by <a href="https://twitter.com/_abhijithv">@abhijithvijayan</a></h3>
 <p>
