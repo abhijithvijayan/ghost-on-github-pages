@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+# @author abhijithvijayan <abhijithvijayan.in>
+
 GHOST_URL="localhost:2368/"
 OUTDIR=static
 
@@ -13,7 +15,7 @@ setup() {
 		read -p "Github username: "  gh_username
 		read -p "Remote URL: "  remote_url
 		echo "Leave blank if repo name is username.github.io"
-		read -p "Repo name: " gh_repo
+		read -p "Repo name(eg: ghost-blog-demo): " gh_repo
 
 		wget -r -nH -P $OUTDIR -E -T 2 -np -k $GHOST_URL
 
