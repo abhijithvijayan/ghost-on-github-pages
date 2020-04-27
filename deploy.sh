@@ -58,6 +58,16 @@ update() {
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
 		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
 
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGG 600w#''.JPG 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGPG 1000w#''.JPG 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGJPG 2000w#''.JPG 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGG 600w#''.JPEG 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGEG 1000w#''.JPEG 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGPEG 2000w#''.JPEG 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGG 600w#''.PNG 600w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGNG 1000w#''.PNG 1000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGPNG 2000w#''.PNG 2000w''#g' {} \;
+
 		echo '[INFO] Deploying to your Github repository...'
 
 		# Commiting changes
