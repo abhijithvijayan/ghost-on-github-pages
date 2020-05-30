@@ -18,6 +18,8 @@
 </p>
 <hr />
 
+Update: The flexibility of this project allows you to push the static site to any github repo and deploy it with any service like [Netlify](https://netlify.app). I'd recommend connecting the repo to Netlify service and deploy it there. Also, Netlify provides features like Custom Domain free of charges.
+
 ## Table of Contents
 
 - [Requirements](#requirements)
