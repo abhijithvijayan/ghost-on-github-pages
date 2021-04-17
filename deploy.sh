@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
 # @author abhijithvijayan <abhijithvijayan.in>
+# @editor David Su <https://github.com/DieYiSu>
 
 GHOST_URL="localhost:2368/"
-OUTDIR=static
+OUTDIR=ghost-Blog-Static-Output
 
 setup() {
 		echo ' -------------------- INFORMATION NEEDED -------------------- '
@@ -19,15 +20,40 @@ setup() {
 
 		wget -r -nH -P $OUTDIR -E -T 2 -np -k $GHOST_URL
 
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's+http://localhost:2368/+'$gh_username'.github.io/'$gh_repo'+g' '{}' \;
+
+		echo ''
+		echo ' ------------------- FIXING IMAGES  -------------------- '
+		echo ''
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgg 600w/.jpg 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgpg 1000w/.jpg 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgjpg 2000w/.jpg 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegg 600w/.jpeg 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegeg 1000w/.jpeg 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegpeg 2000w/.jpeg 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngg 600w/.png 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngng 1000w/.png 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngpng 2000w/.png 2000w/g' '{}' \;
+
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGG 600w/.JPG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGPG 1000w/.JPG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGJPG 2000w/.JPG 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGG 600w/.JPEG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGEG 1000w/.JPEG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGPEG 2000w/.JPEG 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGG 600w/.PNG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGNG 1000w/.PNG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGPNG 2000w/.PNG 2000w/g' '{}' \;
+
+		echo '[INFO] Deploying to your Github repository...'
 
 		cd $OUTDIR
-		git init
+		git init -b main
 		git remote add origin "$remote_url"
 
 		git add .
 		git commit -m "Initial commit"
-		git push origin master:master master:gh-pages -f
+		git push origin main -f
 }
 
 update() {
@@ -43,38 +69,38 @@ update() {
 		read -p "Repo name(eg: ghost-blog-demo): " gh_repo
 
 		# Fix links
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#http://localhost:2368#'$gh_username'.github.io/'$gh_repo'#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's+http://localhost:2368/+'$gh_username'.github.io/'$gh_repo'+g' '{}' \;
 
 		echo ''
 		echo ' ------------------- FIXING IMAGES  -------------------- '
 		echo ''
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgg 600w#''.jpg 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgpg 1000w#''.jpg 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpgjpg 2000w#''.jpg 2000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegg 600w#''.jpeg 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegeg 1000w#''.jpeg 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.jpegpeg 2000w#''.jpeg 2000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngg 600w#''.png 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngng 1000w#''.png 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.pngpng 2000w#''.png 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgg 600w/.jpg 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgpg 1000w/.jpg 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpgjpg 2000w/.jpg 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegg 600w/.jpeg 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegeg 1000w/.jpeg 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.jpegpeg 2000w/.jpeg 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngg 600w/.png 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngng 1000w/.png 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.pngpng 2000w/.png 2000w/g' '{}' \;
 
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGG 600w#''.JPG 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGPG 1000w#''.JPG 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPGJPG 2000w#''.JPG 2000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGG 600w#''.JPEG 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGEG 1000w#''.JPEG 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.JPEGPEG 2000w#''.JPEG 2000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGG 600w#''.PNG 600w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGNG 1000w#''.PNG 1000w''#g' {} \;
-		find $OUTDIR -name *.html -type f -exec sed -i '''s#.PNGPNG 2000w#''.PNG 2000w''#g' {} \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGG 600w/.JPG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGPG 1000w/.JPG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPGJPG 2000w/.JPG 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGG 600w/.JPEG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGEG 1000w/.JPEG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.JPEGPEG 2000w/.JPEG 2000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGG 600w/.PNG 600w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGNG 1000w/.PNG 1000w/g' '{}' \;
+		find $OUTDIR -name *.html -type f -exec sed -i -e 's/.PNGPNG 2000w/.PNG 2000w/g' '{}' \;
 
 		echo '[INFO] Deploying to your Github repository...'
 
-		# Commiting changes
+		Commiting changes
 		cd $OUTDIR
 		git add .
 		git commit -m "Update on the website at $(date)"
-		git push origin master:master master:gh-pages -f
+		git push origin main -f
 }
 
 # entry point
@@ -96,4 +122,3 @@ build() {
 }
 
 build
-
